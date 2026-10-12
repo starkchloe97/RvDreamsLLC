@@ -4,6 +4,7 @@ import { RouterLink, useRouter } from 'vue-router';
 import PageHero from '../components/shared/PageHero.vue';
 import { useStorefront } from '../composables/useStorefront.js';
 import { money } from '../utils/catalog.js';
+import { SITE_PHONE } from '../config/siteInfo.js';
 const router = useRouter();
 const { cartItems, cartCount, cartSubtotal, clearCart, saveLastOrder, shippingFor } = useStorefront();
 const states = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY','PR','GU','VI','AS','MP'];
@@ -53,7 +54,7 @@ async function placeOrder() {
       const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ _subject: `New order ${order.number}`, ...order, items: order.items.map(item => `${item.qty} x ${item.sku} ${item.name} @ ${money(item.price)}`).join('\n'), address: order.address.join(', ') }) });
       if (!response.ok) throw new Error(`Order endpoint returned ${response.status}`);
     } catch {
-      errorMessage.value = 'We could not place your order. Please try again, or call (236) 506-1948.';
+      errorMessage.value = 'We could not place your order. Please try again, or call ${SITE_PHONE}.';
       busy.value = false;
       return;
     }
