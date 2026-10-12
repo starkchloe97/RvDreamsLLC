@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { useStorefront } from '../../composables/useStorefront.js';
+import { SITE_NAME, SITE_PHONE, SITE_PHONE_RAW, SITE_EMAIL, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2 } from '../../config/siteInfo.js';
 const year = new Date().getFullYear();
 </script>
 <template>
@@ -10,8 +11,8 @@ const year = new Date().getFullYear();
         <div>
           <div class="ftr__brand"><span class="brand__mark"><svg viewBox="0 0 100 100" aria-hidden="true"><text x="50"
                   y="68" text-anchor="middle" font-family="PT Serif, Georgia, serif" font-size="54" font-weight="700"
-                  fill="#1A1A18">10</text></svg></span><span>ONE 10 GLOBAL LLC</span></div>
-          <p class="ftr__about">ONE 10 GLOBAL is an online store for home organization and kitchen essentials from
+                  fill="#1A1A18">10</text></svg></span><span>{{ SITE_NAME }}</span></div>
+          <p class="ftr__about">{{ SITE_NAME }} is an online store for home organization and kitchen essentials from
             top-rated brands. Based in Dallas, Texas.</p>
           <div class="ftr__pay" aria-label="Accepted payment methods">
             <span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>DISCOVER</span></div>
@@ -79,16 +80,16 @@ const year = new Date().getFullYear();
       </div>
       <div class="ftr__legal">
         <div class="ftr__biz">
-          <div><strong>Legal Entity</strong>ONE 10 GLOBAL LLC<br>Texas LLC · SOS File No. 0804835686</div>
+          <div><strong>Legal Entity</strong>{{ SITE_NAME }}<br>Texas LLC · SOS File No. 0804835686</div>
           <div><strong>Business Address</strong>
-            <address>ONE 10 GLOBAL LLC<br>10228 E Northwest Hwy<br>Dallas, TX 75238<br>United States</address>
+            <address>{{ SITE_NAME }}<br>{{ SITE_ADDRESS_LINE1 }}<br>{{ SITE_ADDRESS_LINE2 }}</address>
           </div>
           <div><strong>Customer Service</strong><a
-              href="mailto:support@one10globalllc.com">support@one10globalllc.com</a><br><a
-              href="tel:+12365061948">(236) 506-1948</a><br>Mon–Fri, 9:00 AM – 5:00 PM CT<br>Response within 1 business
+               :href="`mailto:${SITE_EMAIL}`">{{ SITE_EMAIL }}</a><br><a
+               :href="`tel:${SITE_PHONE_RAW}`">{{ SITE_PHONE }}</a><br>Mon–Fri, 9:00 AM – 5:00 PM CT<br>Response within 1 business
             day</div>
         </div>
-        <div class="ftr__base"><span>© {{ year }} ONE 10 GLOBAL LLC. All rights reserved. Product names and brands
+        <div class="ftr__base"><span>© {{ year }} {{ SITE_NAME }}. All rights reserved. Product names and brands
             belong to their respective owners.</span>
           <nav aria-label="Legal">
             <RouterLink to="/policies/terms/">Terms</RouterLink>
