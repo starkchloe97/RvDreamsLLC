@@ -76,7 +76,7 @@ router.afterEach(to => {
   upsertMeta('meta[name="description"]', 'meta', { name: 'description', content: description });
   upsertMeta('meta[property="og:title"]', 'meta', { property: 'og:title', content: title });
   upsertMeta('meta[property="og:description"]', 'meta', { property: 'og:description', content: description });
-  const canonical = page?.canonical ? page.canonical.replace(/^https?:\\/\\/[^/]+/, SITE_URL) : new URL(to.fullPath, SITE_URL).href;
+  const canonical = page?.canonical ? `${SITE_URL}${new URL(page.canonical).pathname}` : new URL(to.fullPath, SITE_URL).href;
   upsertMeta('meta[property="og:url"]', 'meta', { property: 'og:url', content: canonical });
   upsertMeta('link[rel="canonical"]', 'link', { rel: 'canonical', href: canonical });
 
