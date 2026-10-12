@@ -15,6 +15,7 @@ import FaqPage from '../pages/FaqPage.vue';
 import TermsPage from '../pages/TermsPage.vue';
 import PrivacyPage from '../pages/PrivacyPage.vue';
 import AccessibilityPage from '../pages/AccessibilityPage.vue';
+import { SITE_NAME, SITE_URL } from '../config/siteInfo.js';
 import NotFoundPage from '../pages/NotFoundPage.vue';
 
 const pageComponents = {
@@ -69,13 +70,13 @@ function upsertMeta(selector, tagName, attrs) {
 
 router.afterEach(to => {
   const page = pages[to.path];
-  const title = page?.title || 'Page Not Found | ONE 10 GLOBAL LLC';
+  const title = (page?.title || `Page Not Found | ${SITE_NAME}`).replace(/ONE 10 GLOBAL LLC/g, SITE_NAME);
   const description = page?.description || "The page you're looking for doesn't exist.";
   document.title = title;
   upsertMeta('meta[name="description"]', 'meta', { name: 'description', content: description });
   upsertMeta('meta[property="og:title"]', 'meta', { property: 'og:title', content: title });
   upsertMeta('meta[property="og:description"]', 'meta', { property: 'og:description', content: description });
-  const canonical = page?.canonical || new URL(to.fullPath, window.location.origin).href;
+  const canonical = page?.canonical ? page.canonical.replace(/^https?:\\/\\/[^/]+/, SITE_URL) : new URL(to.fullPath, SITE_URL).href;
   upsertMeta('meta[property="og:url"]', 'meta', { property: 'og:url', content: canonical });
   upsertMeta('link[rel="canonical"]', 'link', { rel: 'canonical', href: canonical });
 
