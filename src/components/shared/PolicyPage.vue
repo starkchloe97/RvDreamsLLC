@@ -20,7 +20,7 @@ function resolveSiteInfo(value) {
       .replaceAll('Dallas, TX 75238, United States', SITE_ADDRESS_LINE2)
       .replaceAll('10228 E Northwest Hwy, Dallas, TX 75238', SITE_ADDRESS_ONE_LINE.replace(', United States', ''))
       .replaceAll('https://www.one10globalllc.com', SITE_URL)
-      .replaceAll('www.one10globalllc.com', SITE_URL.replace(/^https?:\\/\\//, ''))
+      .replaceAll('www.one10globalllc.com', new URL(SITE_URL).host)
       .replaceAll('one10globalllc.com', new URL(SITE_URL).hostname);
   }
   if (Array.isArray(value)) return value.map(resolveSiteInfo);
