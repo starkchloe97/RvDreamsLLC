@@ -54,7 +54,7 @@ async function placeOrder() {
       const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ _subject: `New order ${order.number}`, ...order, items: order.items.map(item => `${item.qty} x ${item.sku} ${item.name} @ ${money(item.price)}`).join('\n'), address: order.address.join(', ') }) });
       if (!response.ok) throw new Error(`Order endpoint returned ${response.status}`);
     } catch {
-      errorMessage.value = 'We could not place your order. Please try again, or call ${SITE_PHONE}.';
+      errorMessage.value = `We could not place your order. Please try again, or call ${SITE_PHONE}.`;
       busy.value = false;
       return;
     }
