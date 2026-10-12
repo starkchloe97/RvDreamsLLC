@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { useStorefront } from '../../composables/useStorefront.js';
 import AnnouncementBar from './AnnouncementBar.vue';
+import { SITE_NAME } from '../../config/siteInfo.js';
 const { state, cartCount } = useStorefront();
 const route = useRoute();
 const scrolled = ref(false);
@@ -15,11 +16,11 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
   <AnnouncementBar />
   <header class="hdr" :class="{ 'is-scrolled': scrolled }">
     <div class="wrap hdr__in">
-      <RouterLink to="/" class="brand" aria-label="ONE 10 GLOBAL LLC home" @click="state.mobileMenuOpen = false">
+      <RouterLink to="/" class="brand"  :aria-label="`${SITE_NAME} home`" @click="state.mobileMenuOpen = false">
         <span class="brand__mark"><svg viewBox="0 0 100 100" aria-hidden="true"><text x="50" y="68" text-anchor="middle"
               font-family="PT Serif, Georgia, serif" font-size="54" font-weight="700"
               fill="#FBFAF7">10</text></svg></span>
-        <span class="brand__txt">ONE 10 GLOBAL <small>LLC</small></span>
+        <span class="brand__txt">{{ SITE_NAME }}</span>
       </RouterLink>
       <nav class="nav" :class="{ open: state.mobileMenuOpen }" aria-label="Main navigation">
         <RouterLink to="/shop/" :class="{ 'is-on': isActive('/shop/') }" @click="state.mobileMenuOpen = false">Shop All
