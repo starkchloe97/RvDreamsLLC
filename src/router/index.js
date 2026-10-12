@@ -71,7 +71,7 @@ function upsertMeta(selector, tagName, attrs) {
 router.afterEach(to => {
   const page = pages[to.path];
   const title = (page?.title || `Page Not Found | ${SITE_NAME}`).replace(/ONE 10 GLOBAL LLC/g, SITE_NAME);
-  const description = page?.description || "The page you're looking for doesn't exist.";
+  const description = (page?.description || "The page you're looking for doesn't exist.").replace(/ONE 10 GLOBAL LLC/g, SITE_NAME).replace(/ONE 10 GLOBAL/g, SITE_NAME.replace(/ LLC$/, ''));
   document.title = title;
   upsertMeta('meta[name="description"]', 'meta', { name: 'description', content: description });
   upsertMeta('meta[property="og:title"]', 'meta', { property: 'og:title', content: title });
