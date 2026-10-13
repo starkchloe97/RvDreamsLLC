@@ -11,17 +11,17 @@ const props = defineProps({
 function resolveSiteInfo(value) {
   if (typeof value === 'string') {
     return value
-      .replaceAll('ONE 10 GLOBAL LLC', SITE_NAME)
-      .replaceAll('ONE 10 GLOBAL', SITE_NAME.replace(/ LLC$/, ''))
-      .replaceAll('support@one10globalllc.com', SITE_EMAIL)
-      .replaceAll('(236) 506-1948', SITE_PHONE)
-      .replaceAll('+12365061948', SITE_PHONE_RAW)
-      .replaceAll('10228 E Northwest Hwy', SITE_ADDRESS_LINE1)
-      .replaceAll('Dallas, TX 75238, United States', SITE_ADDRESS_LINE2)
-      .replaceAll('10228 E Northwest Hwy, Dallas, TX 75238', SITE_ADDRESS_ONE_LINE.replace(', United States', ''))
-      .replaceAll('https://www.one10globalllc.com', SITE_URL)
-      .replaceAll('www.one10globalllc.com', new URL(SITE_URL).host)
-      .replaceAll('one10globalllc.com', new URL(SITE_URL).hostname);
+      .replace(/ONE 10 GLOBAL LLC/gi, SITE_NAME)
+      .replace(/ONE 10 GLOBAL/gi, SITE_NAME.replace(/ LLC$/i, ''))
+      .replace(/(?:support|returns|warranty|legal|privacy|access)@one10globalllc\.com/gi, SITE_EMAIL)
+      .replace(/\(236\)\s*506-1948/g, SITE_PHONE)
+      .replace(/\+1?-?236-506-1948/g, SITE_PHONE_RAW)
+      .replace(/10228 E Northwest Hwy,?\s*Dallas, TX 75238(?:, United States)?/gi, SITE_ADDRESS_ONE_LINE)
+      .replace(/10228 E Northwest Hwy/gi, SITE_ADDRESS_LINE1)
+      .replace(/Dallas, TX 75238(?:, United States)?/gi, SITE_ADDRESS_LINE2)
+      .replace(/Dallas, Texas/gi, SITE_ADDRESS_LINE2)
+      .replace(/https?:\/\/(?:www\.)?one10globalllc\.com/gi, SITE_URL)
+      .replace(/(?:www\.)?one10globalllc\.com/gi, new URL(SITE_URL).host);
   }
   if (Array.isArray(value)) return value.map(resolveSiteInfo);
   if (value && typeof value === 'object') {
