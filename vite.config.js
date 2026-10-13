@@ -1,8 +1,14 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import { SITE_NAME, SITE_URL } from './src/config/siteInfo.js';
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), {
+    name: 'site-info-html',
+    transformIndexHtml(html) {
+      return html.replaceAll('__SITE_NAME__', SITE_NAME).replaceAll('__SITE_URL__', SITE_URL);
+    }
+  }],
   appType: 'spa',
   build: {
     outDir: 'dist',
