@@ -1,10 +1,10 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
-import { useStorefront } from '../../composables/useStorefront.js';
-import AnnouncementBar from './AnnouncementBar.vue';
-import { SITE_NAME } from '../../config/siteInfo.js';
-import brand from '../../assets/images/brand.png';
+import { useStorefront } from '@/composables/useStorefront.js';
+import AnnouncementBar from '@/components/layout/AnnouncementBar.vue'; 
+import { SITE_NAME } from '@/config/siteInfo.js';
+import brand from '@/assets/images/brand.png';
 const { state, cartCount } = useStorefront();
 const route = useRoute();
 const scrolled = ref(false);

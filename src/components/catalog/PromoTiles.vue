@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { firstIn, PRODUCTS, money, productImageUrl, categoryUrl } from '../../utils/catalog.js';
+import { firstIn, PRODUCTS, money, productImageUrl, categoryUrl } from '@/utils/catalog.js';
 const storage = computed(() => firstIn('Storage', 2));
 const cabinet = computed(() => firstIn('Cabinet & Drawer', 2));
 const lowPrice = computed(() => Math.min(...PRODUCTS.filter(product => product.sub === 'Cabinet & Drawer').map(product => product.price)));

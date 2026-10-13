@@ -1,5 +1,5 @@
 <script setup>
-import { useStorefront } from '../../composables/useStorefront.js';
+import { useStorefront } from '@/composables/useStorefront.js';
 const { state } = useStorefront();
 </script>
 <template>

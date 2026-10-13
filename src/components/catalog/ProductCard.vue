@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { productImageUrl, productImageCount, money } from '../../utils/catalog.js';
-import { useStorefront } from '../../composables/useStorefront.js';
+import { productImageUrl, productImageCount, money } from '@/utils/catalog.js';
+import { useStorefront } from '@/composables/useStorefront.js';
 const props = defineProps({ product: { type: Object, required: true } });
 const { state, addToCart, toggleWishlist, openQuickView } = useStorefront();
 const wished = computed(() => Boolean(state.wishlist[props.product.id]));

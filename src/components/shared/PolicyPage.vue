@@ -1,9 +1,9 @@
 <script setup>
 import { computed } from 'vue';
-import PageHero from './PageHero.vue';
-import LegalContent from './LegalContent.vue';
-import policies from '../../data/policies.json';
-import { SITE_NAME, SITE_EMAIL, SITE_ADDRESS_ONE_LINE, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2, SITE_ADDRESS_LOCALITY, SITE_ADDRESS_REGION, SITE_ADDRESS_POSTAL_CODE, SITE_ADDRESS_COUNTRY, SITE_URL } from '../../config/siteInfo.js';
+import PageHero from '@/components/shared/PageHero.vue';
+import LegalContent from '@/components/shared/LegalContent.vue';
+import policies from '@/data/policies.json';
+import { SITE_NAME, SITE_EMAIL, SITE_ADDRESS_ONE_LINE, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2, SITE_ADDRESS_LOCALITY, SITE_ADDRESS_REGION, SITE_ADDRESS_POSTAL_CODE, SITE_ADDRESS_COUNTRY, SITE_URL } from '@/config/siteInfo.js';
 
 const props = defineProps({
   policyKey: { type: String, required: true }

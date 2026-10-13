@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { useStorefront } from '../../composables/useStorefront.js';
+import { useStorefront } from '@/composables/useStorefront.js';
 const { state } = useStorefront();
 </script>
 <template>

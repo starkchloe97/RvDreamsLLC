@@ -1,7 +1,7 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import { PRODUCTS, countIn, firstIn, categoryUrl, productImageUrl } from '../../utils/catalog.js';
+import { PRODUCTS, countIn, firstIn, categoryUrl, productImageUrl } from '@/utils/catalog.js';
 const slides = [
   { category: 'Prep Tools', tone: 'sand', kicker: 'Kitchen gadgets', title: 'Small tools that make every meal easier', text: 'Scales, thermometers, openers and the gadgets you reach for every day.' },
   { category: 'Storage', tone: 'sage', kicker: 'Food storage', title: 'Keep food fresh and your fridge in order', text: 'Containers, bag holders, wraps and racks that put everything in its place.' },

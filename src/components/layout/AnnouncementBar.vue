@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { SITE_ADDRESS_LINE2 } from '../../config/siteInfo.js';
+import { SITE_ADDRESS_LINE2 } from '@/config/siteInfo.js';
 const messages = [
   'Free US shipping on orders over $50',
   '30-day returns with no restocking fee',

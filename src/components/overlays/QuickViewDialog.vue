@@ -1,8 +1,8 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
-import { productImageUrl, money } from '../../utils/catalog.js';
-import { useStorefront } from '../../composables/useStorefront.js';
+import { productImageUrl, money } from '@/utils/catalog.js';
+import { useStorefront } from '@/composables/useStorefront.js';
 const { state, quickViewProduct, addToCart, closeQuickView } = useStorefront();
 const quantity = ref(1);
 watch(() => state.quickViewId, () => { quantity.value = 1; });

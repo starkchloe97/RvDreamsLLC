@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import CartLineItem from '../catalog/CartLineItem.vue';
-import { money } from '../../utils/catalog.js';
-import { useStorefront } from '../../composables/useStorefront.js';
+import { money } from '@/utils/catalog.js';
+import { useStorefront } from '@/composables/useStorefront.js';
 const { state, cartItems, cartCount, cartSubtotal, cartShipping, cartTotal, setQuantity, removeFromCart } = useStorefront();
 const remaining = computed(() => Math.max(0, 50 - cartSubtotal.value));
 const shippingPercent = computed(() => Math.min(100, (cartSubtotal.value / 50) * 100));

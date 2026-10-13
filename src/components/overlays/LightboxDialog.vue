@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
-import { productImageUrl, PRODUCT_BY_ID } from '../../utils/catalog.js';
-import { useStorefront } from '../../composables/useStorefront.js';
+import { productImageUrl, PRODUCT_BY_ID } from '@/utils/catalog.js';
+import { useStorefront } from '@/composables/useStorefront.js';
 const { state, closeLightbox } = useStorefront();
 const product = computed(() => state.lightbox ? PRODUCT_BY_ID.get(state.lightbox.productId) : null);
 const image = computed(() => product.value ? productImageUrl(product.value, state.lightbox?.index || 0, 1000) : '');

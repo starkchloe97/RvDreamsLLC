@@ -4,11 +4,11 @@
  * Keep config.php out of version control and never expose credentials in frontend code.
  */
 return [
-    'db_host' => '127.0.0.1',
+    'db_host' => 'localhost',
     'db_port' => 3306,
-    'db_name' => 'rvdreams_storefront',
-    'db_user' => 'your_mysql_username',
-    'db_pass' => 'replace-with-a-strong-password',
+    'db_name' => 'micrvsdj_rvdreamsx',
+    'db_user' => 'micrvsdj_rvdreamsxx',
+    'db_pass' => '@123Mj491d_fu8k',
     'allowed_origins' => [
         'https://www.rvdreamsllc.com',
         'https://rvdreamsllc.com',

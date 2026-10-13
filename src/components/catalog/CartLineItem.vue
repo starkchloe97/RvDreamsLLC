@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { money, productImageUrl } from '../../utils/catalog.js';
+import { money, productImageUrl } from '@/utils/catalog.js';
 const props = defineProps({ product: { type: Object, required: true }, quantity: { type: Number, required: true } });
 const emit = defineEmits(['change', 'remove']);
 </script>

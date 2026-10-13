@@ -1,5 +1,5 @@
 <script setup>
-import Breadcrumbs from './Breadcrumbs.vue';
+import Breadcrumbs from '@/Breadcrumbs.vue';
 defineProps({ title: { type: String, required: true }, description: { type: String, default: '' }, breadcrumbs: { type: Array, default: () => [] }, slim: { type: Boolean, default: false } });
 </script>
 <template><section class="phero" :class="{ 'phero--slim': slim }"><div class="wrap"><Breadcrumbs :items="breadcrumbs" /><h1>{{ title }}</h1><p v-if="description">{{ description }}</p></div></section></template>

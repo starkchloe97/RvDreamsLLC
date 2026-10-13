@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { useStorefront } from '../../composables/useStorefront.js';
+import { useStorefront } from '@/composables/useStorefront.js';
 const { state, saveCookiePreference } = useStorefront();
 const visible = computed(() => state.cookiePreference === null);
 </script>

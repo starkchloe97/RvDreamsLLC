@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { PRODUCTS, subcategories, firstIn, productImageUrl } from '../../utils/catalog.js';
+import { PRODUCTS, subcategories, firstIn, productImageUrl } from '@/utils/catalog.js';
 const images = computed(() => subcategories().map(category => firstIn(category, 2)[1] || firstIn(category)[0]).filter(Boolean).concat(PRODUCTS.slice(4)).slice(0, 4));
 </script>
 <template>

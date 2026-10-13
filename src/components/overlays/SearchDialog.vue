@@ -1,8 +1,8 @@
 <script setup>
 import { computed, nextTick, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
-import { searchProducts, productImageUrl } from '../../utils/catalog.js';
-import { useStorefront } from '../../composables/useStorefront.js';
+import { searchProducts, productImageUrl } from '@/utils/catalog.js';
+import { useStorefront } from '@/composables/useStorefront.js';
 const { state, money } = useStorefront();
 const query = ref('');
 const input = ref(null);

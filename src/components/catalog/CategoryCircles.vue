@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { PRODUCTS, countIn, firstIn, subcategories, categoryUrl, productImageUrl, CATEGORY_CARDS } from '../../utils/catalog.js';
+import { PRODUCTS, countIn, firstIn, subcategories, categoryUrl, productImageUrl, CATEGORY_CARDS } from '@/utils/catalog.js';
 const subs = computed(() => subcategories().filter(category => countIn(category)));
 const extras = computed(() => CATEGORY_CARDS.map(category => category.name).filter(category => !subs.value.includes(category) && category !== 'Kitchen' && countIn(category)));
 const products = computed(() => [...subs.value.map(category => ({ label: category, product: firstIn(category)[0] })), ...extras.value.map(category => ({ label: category, product: firstIn(category)[0] }))]);

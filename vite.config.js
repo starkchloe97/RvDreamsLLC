@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { SITE_NAME, SITE_URL } from './src/config/siteInfo.js';
+import { fileURLToPath, URL } from 'node:url';
+import { SITE_NAME, SITE_URL } from '@/src/config/siteInfo.js';
 
 export default defineConfig({
   plugins: [vue(), {
@@ -9,6 +10,13 @@ export default defineConfig({
       return html.replaceAll('__SITE_NAME__', SITE_NAME).replaceAll('__SITE_URL__', SITE_URL);
     }
   }],
+
+    resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  
   appType: 'spa',
   build: {
     outDir: 'dist',

@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { countIn, firstIn, productImageUrl } from '../../utils/catalog.js';
+import { countIn, firstIn, productImageUrl } from '@/utils/catalog.js';
 const products = computed(() => firstIn('Storage', 4));
 </script>
 <template>

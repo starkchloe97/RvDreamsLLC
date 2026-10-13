@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { subcategories, firstIn, money, productImageUrl } from '../../utils/catalog.js';
-import { useStorefront } from '../../composables/useStorefront.js';
+import { subcategories, firstIn, money, productImageUrl } from '@/utils/catalog.js';
+import { useStorefront } from '@/composables/useStorefront.js';
 const { addToCart } = useStorefront();
 const products = computed(() => subcategories().map(category => firstIn(category)[0]).filter(Boolean).slice(0, 3));
 const total = computed(() => products.value.reduce((sum, product) => sum + product.price, 0));

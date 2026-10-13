@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import brandWhite from '../../assets/images/brandWhite.png';
-import { SITE_NAME, SITE_EMAIL, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2 } from '../../config/siteInfo.js';
+import brandWhite from '@/assets/images/brandWhite.png';
+import { SITE_NAME, SITE_EMAIL, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2 } from '@/config/siteInfo.js';
 const year = new Date().getFullYear();
 </script>
 <template>

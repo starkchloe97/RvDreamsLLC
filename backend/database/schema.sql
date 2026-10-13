@@ -1,8 +1,4 @@
--- Execute in MySQL/phpMyAdmin. If your host requires a prefixed DB name,
--- create/select that database first and adjust or remove CREATE DATABASE/USE.
-CREATE DATABASE IF NOT EXISTS rvdreams_storefront
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE rvdreams_storefront;
+
 
 CREATE TABLE IF NOT EXISTS contact_submissions (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
