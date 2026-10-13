@@ -30,6 +30,7 @@ function resolveSiteInfo(value) {
       .replace(/10228 E Northwest Hwy/gi, SITE_ADDRESS_LINE1)
       .replace(/Dallas, TX 75238(?:, United States)?/gi, SITE_ADDRESS_LINE2)
       .replace(/Dallas, Texas/gi, SITE_ADDRESS_LINE2)
+      .replace(/Dallas facility/gi, 'our facility')
       .replace(/https?:\/\/(?:www\.)?one10globalllc\.com/gi, SITE_URL)
       .replace(/(?:www\.)?one10globalllc\.com/gi, new URL(SITE_URL).host);
   }
@@ -74,7 +75,7 @@ const routes = Object.entries(pages).map(([path, page], index) => ({
   name: `${page.page}-${index}`,
   component: pageComponents[page.page] || NotFoundPage,
   props: () => ({
-    pageInfo: page,
+    pageInfo: resolveSiteInfo(page),
     category: page.page === 'shop' ? (page.cat || 'All') : undefined,
     slug: page.page === 'product' ? page.product : undefined
   })
