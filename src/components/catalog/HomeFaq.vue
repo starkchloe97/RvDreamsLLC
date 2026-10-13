@@ -1,11 +1,12 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import { SITE_NAME, SITE_EMAIL } from '@/config/siteInfo.js';
 const faqs = [
   { question: 'How long does shipping take?', answer: 'Orders placed before 1:00 PM Central Time ship the same business day. Standard shipping takes 3–6 business days. Expedited (2–3 days) and Priority (1–2 days) are available at checkout.' },
   { question: 'What is your return policy?', answer: 'You may return any unused item within 30 days of delivery in its original packaging for a full refund of the purchase price. No restocking fee. Return shipping is free for defective or incorrect items.' },
   { question: 'Where do you ship from?', answer: 'All orders ship from our Dallas, Texas facility. We currently ship within the United States only.' },
   { question: 'Are your products authentic?', answer: 'Yes. Every product is a genuine branded item, and each listing names the brand and shows its specifications.' },
-  { question: 'What if a product fails?', answer: 'Every ONE 10 GLOBAL product carries a 1–2 year limited warranty. Email warranty@one10globalllc.com with photos of the problem and we will replace it or refund you.' }
+  { question: 'What if a product fails?', answer: `Every ${SITE_NAME} product carries a 1–2 year limited warranty. Email ${SITE_EMAIL} with photos of the problem and we will replace it or refund you.` }
 ];
 </script>
 <template>

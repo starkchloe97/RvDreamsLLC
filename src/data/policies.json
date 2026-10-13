@@ -1,13 +1,13 @@
 {
   "shipping": {
     "title": "Shipping Policy",
-    "description": "How, when, and where we ship ONE 10 GLOBAL orders within the United States.",
+    "description": "How, when, and where we ship RV DREAMS orders within the United States.",
     "blocks": [
       {
         "type": "p",
         "runs": [
           {
-            "text": "Last updated: January 2026 · Applies to all orders placed on one10globalllc.com"
+            "text": "Last updated: January 2026 · Applies to all orders placed on www.rvdreamsllc.com"
           }
         ],
         "class": "dateline"
@@ -102,7 +102,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "Shipping charges are calculated at checkout and are based on order weight, destination, and selected service level. Applicable state and local sales tax is calculated at checkout based on the shipping address. ONE 10 GLOBAL LLC collects sales tax in states where we have established economic nexus, in accordance with applicable state law."
+            "text": "Shipping charges are calculated at checkout and are based on order weight, destination, and selected service level. Applicable state and local sales tax is calculated at checkout based on the shipping address. RV DREAMS LLC collects sales tax in states where we have established economic nexus, in accordance with applicable state law."
           }
         ]
       },
@@ -124,8 +124,8 @@
             "text": " of the marked delivery date at "
           },
           {
-            "text": "support@one10globalllc.com",
-            "href": "mailto:support@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "text": ". We will open a carrier trace and, if the package cannot be located, ship a replacement or issue a full refund at our discretion."
@@ -170,8 +170,8 @@
             "text": "You may cancel an order at no charge if it has not yet shipped. Email "
           },
           {
-            "text": "support@one10globalllc.com",
-            "href": "mailto:support@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "text": " with your order number as soon as possible. Once an order has shipped, it is subject to our "
@@ -196,8 +196,8 @@
             "text": "Shipping questions: "
           },
           {
-            "text": "support@one10globalllc.com",
-            "href": "mailto:support@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "text": " or (236) 506-1948, Monday–Friday, 9:00 AM – 5:00 PM Central Time."
@@ -214,7 +214,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "Last updated: January 2026 · Applies to all orders placed on one10globalllc.com"
+            "text": "Last updated: January 2026 · Applies to all orders placed on www.rvdreamsllc.com"
           }
         ],
         "class": "dateline"
@@ -299,8 +299,8 @@
               "text": "Email "
             },
             {
-              "text": "returns@one10globalllc.com",
-              "href": "mailto:returns@one10globalllc.com"
+              "text": "support@rvdreamsllc.com",
+              "href": "mailto:support@rvdreamsllc.com"
             },
             {
               "text": " with your order number and the reason for the return."
@@ -428,8 +428,8 @@
             "text": " or email "
           },
           {
-            "text": "support@one10globalllc.com",
-            "href": "mailto:support@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "text": " with photos of the defect and your order number."
@@ -466,14 +466,14 @@
             "text": "Returns team: "
           },
           {
-            "text": "returns@one10globalllc.com",
-            "href": "mailto:returns@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "break": true
           },
           {
-            "text": " Returns address: ONE 10 GLOBAL LLC — Returns Dept., 10228 E Northwest Hwy, Dallas, TX 75238"
+            "text": " Returns address: RV DREAMS LLC — Returns Dept., 10228 E Northwest Hwy, Dallas, TX 75238"
           }
         ]
       }
@@ -481,7 +481,7 @@
   },
   "warranty": {
     "title": "Warranty",
-    "description": "Limited warranty coverage on every ONE 10 GLOBAL product.",
+    "description": "Limited warranty coverage on every RV DREAMS product.",
     "blocks": [
       {
         "type": "p",
@@ -558,7 +558,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "ONE 10 GLOBAL LLC warrants that its products will be free from defects in materials and workmanship under normal household use for the applicable coverage period. If a product fails due to a manufacturing defect, we will repair or replace it, or refund the purchase price, at our option."
+            "text": "RV DREAMS LLC warrants that its products will be free from defects in materials and workmanship under normal household use for the applicable coverage period. If a product fails due to a manufacturing defect, we will repair or replace it, or refund the purchase price, at our option."
           }
         ]
       },
@@ -613,8 +613,8 @@
               "text": "Email "
             },
             {
-              "text": "warranty@one10globalllc.com",
-              "href": "mailto:warranty@one10globalllc.com"
+              "text": "support@rvdreamsllc.com",
+              "href": "mailto:support@rvdreamsllc.com"
             },
             {
               "text": " with your order number, the product SKU, and a description of the failure."
@@ -645,7 +645,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "This warranty is the sole and exclusive warranty offered by ONE 10 GLOBAL LLC. To the maximum extent permitted by law, ONE 10 GLOBAL LLC disclaims all other warranties, express or implied, including merchantability and fitness for a particular purpose. ONE 10 GLOBAL LLC's total liability under this warranty shall not exceed the original purchase price of the product. Some states do not allow limitations on implied warranties, so the above limitation may not apply to you."
+            "text": "This warranty is the sole and exclusive warranty offered by RV DREAMS LLC. To the maximum extent permitted by law, RV DREAMS LLC disclaims all other warranties, express or implied, including merchantability and fitness for a particular purpose. RV DREAMS LLC's total liability under this warranty shall not exceed the original purchase price of the product. Some states do not allow limitations on implied warranties, so the above limitation may not apply to you."
           }
         ]
       },
@@ -672,8 +672,8 @@
             "text": "Warranty team: "
           },
           {
-            "text": "warranty@one10globalllc.com",
-            "href": "mailto:warranty@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "text": " · (236) 506-1948"
@@ -684,7 +684,7 @@
   },
   "terms": {
     "title": "Terms of Service",
-    "description": "The terms governing your use of one10globalllc.com and your purchase of ONE 10 GLOBAL products.",
+    "description": "The terms governing your use of www.rvdreamsllc.com and your purchase of RV DREAMS products.",
     "blocks": [
       {
         "type": "p",
@@ -706,11 +706,11 @@
             "text": "These Terms of Service (\"Terms\") constitute a legally binding agreement between you (\"you\" or \"Customer\") and "
           },
           {
-            "text": "ONE 10 GLOBAL LLC",
+            "text": "RV DREAMS LLC",
             "tag": "strong"
           },
           {
-            "text": ", a Texas limited liability company with its principal place of business at 10228 E Northwest Hwy, Dallas, TX 75238 (\"ONE 10 GLOBAL,\" \"we,\" \"us,\" or \"our\"). By accessing one10globalllc.com, creating an account, or placing an order, you agree to be bound by these Terms. If you do not agree, do not use the site."
+            "text": ", a Texas limited liability company with its principal place of business at 10228 E Northwest Hwy, Dallas, TX 75238 (\"RV DREAMS,\" \"we,\" \"us,\" or \"our\"). By accessing www.rvdreamsllc.com, creating an account, or placing an order, you agree to be bound by these Terms. If you do not agree, do not use the site."
           }
         ]
       },
@@ -766,7 +766,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "We accept major credit cards, debit cards, and the payment methods displayed at checkout. Payment is collected through the secure payment link in the invoice we email after you place your order, and orders ship once payment is received. You are responsible for any applicable taxes, duties, and fees associated with your purchase. Sales tax is collected in jurisdictions where ONE 10 GLOBAL LLC has established economic nexus."
+            "text": "We accept major credit cards, debit cards, and the payment methods displayed at checkout. Payment is collected through the secure payment link in the invoice we email after you place your order, and orders ship once payment is received. You are responsible for any applicable taxes, duties, and fees associated with your purchase. Sales tax is collected in jurisdictions where RV DREAMS LLC has established economic nexus."
           }
         ]
       },
@@ -835,7 +835,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "All content on this site — including text, product descriptions, photographs, illustrations, logos, graphics, and the ONE 10 GLOBAL name and mark — is the property of ONE 10 GLOBAL LLC or its licensors and is protected by United States and international copyright and trademark law. You may not reproduce, distribute, modify, or create derivative works from any content without our prior written consent."
+            "text": "All content on this site — including text, product descriptions, photographs, illustrations, logos, graphics, and the RV DREAMS name and mark — is the property of RV DREAMS LLC or its licensors and is protected by United States and international copyright and trademark law. You may not reproduce, distribute, modify, or create derivative works from any content without our prior written consent."
           }
         ]
       },
@@ -894,7 +894,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "If you submit a product review, comment, or other content, you grant ONE 10 GLOBAL LLC a non-exclusive, worldwide, royalty-free, perpetual license to use, reproduce, and display that content in connection with our business. You represent that you own or have the right to submit the content and that it does not infringe any third party's rights."
+            "text": "If you submit a product review, comment, or other content, you grant RV DREAMS LLC a non-exclusive, worldwide, royalty-free, perpetual license to use, reproduce, and display that content in connection with our business. You represent that you own or have the right to submit the content and that it does not infringe any third party's rights."
           }
         ]
       },
@@ -918,7 +918,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "To the maximum extent permitted by applicable law, ONE 10 GLOBAL LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including lost profits, lost data, or business interruption, arising out of or relating to your use of the site or products, even if we have been advised of the possibility of such damages. Our total aggregate liability shall not exceed the amount you paid for the product giving rise to the claim."
+            "text": "To the maximum extent permitted by applicable law, RV DREAMS LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including lost profits, lost data, or business interruption, arising out of or relating to your use of the site or products, even if we have been advised of the possibility of such damages. Our total aggregate liability shall not exceed the amount you paid for the product giving rise to the claim."
           }
         ]
       },
@@ -930,7 +930,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "You agree to indemnify, defend, and hold harmless ONE 10 GLOBAL LLC and its officers, members, employees, and agents from any claims, liabilities, damages, losses, and expenses, including reasonable attorneys' fees, arising out of your violation of these Terms or your misuse of the site or products."
+            "text": "You agree to indemnify, defend, and hold harmless RV DREAMS LLC and its officers, members, employees, and agents from any claims, liabilities, damages, losses, and expenses, including reasonable attorneys' fees, arising out of your violation of these Terms or your misuse of the site or products."
           }
         ]
       },
@@ -957,8 +957,8 @@
             "text": "Before filing any legal action, you agree to contact us at "
           },
           {
-            "text": "legal@one10globalllc.com",
-            "href": "mailto:legal@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "text": " and attempt to resolve the dispute informally for at least 30 days. Nothing in this section prevents either party from seeking injunctive relief in court."
@@ -1003,7 +1003,7 @@
             "break": true
           },
           {
-            "text": " ONE 10 GLOBAL LLC"
+            "text": " RV DREAMS LLC"
           },
           {
             "break": true
@@ -1018,8 +1018,8 @@
             "text": " "
           },
           {
-            "text": "legal@one10globalllc.com",
-            "href": "mailto:legal@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "text": " · (236) 506-1948"
@@ -1049,7 +1049,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "ONE 10 GLOBAL LLC (\"ONE 10 GLOBAL,\" \"we,\" \"us,\" or \"our\") operates one10globalllc.com. This Privacy Policy explains how we collect, use, disclose, and protect personal information when you visit our site, place an order, or contact us. We are the data controller for information collected through this site."
+            "text": "RV DREAMS LLC (\"RV DREAMS,\" \"we,\" \"us,\" or \"our\") operates www.rvdreamsllc.com. This Privacy Policy explains how we collect, use, disclose, and protect personal information when you visit our site, place an order, or contact us. We are the data controller for information collected through this site."
           }
         ]
       },
@@ -1205,7 +1205,7 @@
               "tag": "strong"
             },
             {
-              "text": " when required by law, subpoena, court order, or to protect the rights, property, or safety of ONE 10 GLOBAL, our customers, or others"
+              "text": " when required by law, subpoena, court order, or to protect the rights, property, or safety of RV DREAMS, our customers, or others"
             }
           ],
           [
@@ -1305,8 +1305,8 @@
             "text": "Residents of Virginia, Colorado, Connecticut, Utah, and other states with comprehensive privacy laws may have similar rights. To exercise any right, email "
           },
           {
-            "text": "privacy@one10globalllc.com",
-            "href": "mailto:privacy@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "text": ". We will verify your identity and respond within 45 days."
@@ -1348,8 +1348,8 @@
             "text": "Our site is not directed to children under 13, and we do not knowingly collect personal information from children under 13. If we learn that we have collected such information, we will delete it promptly. If you believe a child has provided us with personal information, contact "
           },
           {
-            "text": "privacy@one10globalllc.com",
-            "href": "mailto:privacy@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "text": "."
@@ -1394,7 +1394,7 @@
             "break": true
           },
           {
-            "text": " ONE 10 GLOBAL LLC — Privacy Office"
+            "text": " RV DREAMS LLC — Privacy Office"
           },
           {
             "break": true
@@ -1409,8 +1409,8 @@
             "text": " "
           },
           {
-            "text": "privacy@one10globalllc.com",
-            "href": "mailto:privacy@one10globalllc.com"
+            "text": "support@rvdreamsllc.com",
+            "href": "mailto:support@rvdreamsllc.com"
           },
           {
             "text": " · (236) 506-1948"
@@ -1421,7 +1421,7 @@
   },
   "accessibility": {
     "title": "Accessibility Statement",
-    "description": "Our commitment to making one10globalllc.com usable for everyone.",
+    "description": "Our commitment to making www.rvdreamsllc.com usable for everyone.",
     "blocks": [
       {
         "type": "p",
@@ -1440,7 +1440,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "ONE 10 GLOBAL LLC is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply relevant accessibility standards to our website and communications."
+            "text": "RV DREAMS LLC is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply relevant accessibility standards to our website and communications."
           }
         ]
       },
@@ -1558,7 +1558,7 @@
         "type": "p",
         "runs": [
           {
-            "text": "We welcome your feedback on the accessibility of one10globalllc.com. If you encounter an accessibility barrier, or if you need information from this site in an alternative format, please contact us:"
+            "text": "We welcome your feedback on the accessibility of www.rvdreamsllc.com. If you encounter an accessibility barrier, or if you need information from this site in an alternative format, please contact us:"
           }
         ]
       },
@@ -1570,8 +1570,8 @@
               "text": "Email: "
             },
             {
-              "text": "access@one10globalllc.com",
-              "href": "mailto:access@one10globalllc.com"
+              "text": "support@rvdreamsllc.com",
+              "href": "mailto:support@rvdreamsllc.com"
             }
           ],
           [
@@ -1581,7 +1581,7 @@
           ],
           [
             {
-              "text": "Mail: ONE 10 GLOBAL LLC — Accessibility, 10228 E Northwest Hwy, Dallas, TX 75238"
+              "text": "Mail: RV DREAMS LLC — Accessibility, 10228 E Northwest Hwy, Dallas, TX 75238"
             }
           ]
         ]

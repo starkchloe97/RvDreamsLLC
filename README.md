@@ -1,6 +1,6 @@
-# ONE 10 GLOBAL LLC — Vue 3 + Vite storefront
+# RV DREAMS LLC — Vue 3 + Vite storefront
 
-This project refactors the supplied ONE 10 GLOBAL website into Vue 3 Single-File Components with Vite and Vue Router. It keeps the supplied page copy, product records, route URLs, page metadata, design tokens, responsive layouts, and the original external product-image URLs. Pages and interactions are rendered with Vue templates and Composition API state; there is no legacy page renderer, HTML-string injection, or `v-html` usage.
+This project implements the RV DREAMS LLC website with Vue 3 Single-File Components, Vite, and Vue Router. It keeps the supplied page copy, product records, route URLs, page metadata, design tokens, responsive layouts, and the original external product-image URLs. Pages and interactions are rendered with Vue templates and Composition API state; there is no legacy page renderer, HTML-string injection, or `v-html` usage.
 
 ## Requirements
 

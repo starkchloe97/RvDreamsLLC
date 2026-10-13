@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { PRODUCTS, subcategories, firstIn, productImageUrl } from '@/utils/catalog.js';
+import { SITE_NAME } from '@/config/siteInfo.js';
 const images = computed(() => subcategories().map(category => firstIn(category, 2)[1] || firstIn(category)[0]).filter(Boolean).concat(PRODUCTS.slice(4)).slice(0, 4));
 </script>
 <template>
@@ -13,7 +14,7 @@ const images = computed(() => subcategories().map(category => firstIn(category, 
             </div>
             <div>
                 <h2>A small store in Dallas, Texas</h2>
-                <p class="lede">ONE 10 GLOBAL LLC brings together the best-selling storage and kitchen products in one
+                <p class="lede">{{ SITE_NAME }} brings together the best-selling storage and kitchen products in one
                     place, so you don't have to dig through thousands of listings to find the ones that work.</p>
                 <p class="lede">Every listing shows the brand, full specifications and photos. Orders ship from Dallas
                     and returns come back to the same address.</p>

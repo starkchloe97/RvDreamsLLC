@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /cart/
 Disallow: /checkout/
 Disallow: /thank-you/
-Sitemap: https://www.one10globalllc.com/sitemap.xml
+Sitemap: https://www.rvdreamsllc.com/sitemap.xml
