@@ -7,3 +7,6 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
+
+# Local PHP credentials; never commit this file.
+/public/api/config.php

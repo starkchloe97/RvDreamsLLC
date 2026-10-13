@@ -5,6 +5,8 @@ import PageHero from '../components/shared/PageHero.vue';
 import { useStorefront } from '../composables/useStorefront.js';
 import { money } from '../utils/catalog.js';
 import { SITE_PHONE } from '../config/siteInfo.js';
+import { submitSiteForm, collectTracking } from '../utils/formSubmission.js';
+
 const router = useRouter();
 const { cartItems, cartCount, cartSubtotal, clearCart, saveLastOrder, shippingFor } = useStorefront();
 const states = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY','PR','GU','VI','AS','MP'];
@@ -17,16 +19,16 @@ const form = reactive({ email: '', phone: '', firstName: '', lastName: '', addre
 const errors = ref({});
 const errorMessage = ref('');
 const busy = ref(false);
-const endpoint = import.meta.env.VITE_ORDER_ENDPOINT || '';
 const shippingCost = computed(() => shippingFor(cartSubtotal.value, form.shipping));
 const total = computed(() => cartSubtotal.value + shippingCost.value);
 const moneyShipping = cost => cost === 0 ? 'Free' : money(cost);
+
 function validate() {
   const next = {};
   for (const key of ['email','phone','firstName','lastName','address1','city','state','zip']) {
     if (!String(form[key] || '').trim()) next[key] = true;
   }
-  if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = true;
+  if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) next.email = true;
   if (form.zip && !/^\d{5}(-\d{4})?$/.test(form.zip.trim())) next.zip = true;
   if (form.phone && form.phone.replace(/\D/g, '').length < 10) next.phone = true;
   errors.value = next;
@@ -35,36 +37,59 @@ function validate() {
   errorMessage.value = '';
   return true;
 }
+
 async function placeOrder() {
-  if (!validate()) return;
+  if (busy.value || !validate()) return;
   if (!cartItems.value.length) { router.push('/cart/'); return; }
   busy.value = true;
+  errorMessage.value = '';
   const now = new Date();
   const order = {
-    number: `HF-${now.toISOString().slice(2, 10).replace(/-/g, '')}-${String(Math.floor(1000 + Math.random() * 9000))}`,
-    placed: now.toISOString(), email: form.email.trim(), phone: form.phone.trim(),
-    name: `${form.firstName.trim()} ${form.lastName.trim()}`,
-    address: [form.address1.trim(), form.address2.trim(), `${form.city.trim()}, ${form.state} ${form.zip.trim()}`].filter(Boolean),
+    number: '',
+    placed: now.toISOString(),
+    email: form.email.trim(),
+    phone: form.phone.trim(),
+    name: form.firstName.trim() + ' ' + form.lastName.trim(),
+    address: [form.address1.trim(), form.address2.trim(), form.city.trim() + ', ' + form.state + ' ' + form.zip.trim()].filter(Boolean),
     shipping: { method: form.shipping, cost: shippingCost.value },
-    items: cartItems.value.map(({ product, quantity }) => ({ sku: product.item || product.id, name: product.name, qty: quantity, price: product.price })),
-    subtotal: Number(cartSubtotal.value.toFixed(2)), total: Number(total.value.toFixed(2)), notes: form.notes.trim(), payment: 'invoice'
+    items: cartItems.value.map(({ product, quantity }) => ({
+      sku: product.item || product.id, name: product.name, qty: quantity, price: product.price
+    })),
+    subtotal: Number(cartSubtotal.value.toFixed(2)),
+    total: Number(total.value.toFixed(2)),
+    notes: form.notes.trim(),
+    payment: 'invoice'
   };
-  if (endpoint) {
-    try {
-      const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ _subject: `New order ${order.number}`, ...order, items: order.items.map(item => `${item.qty} x ${item.sku} ${item.name} @ ${money(item.price)}`).join('\n'), address: order.address.join(', ') }) });
-      if (!response.ok) throw new Error(`Order endpoint returned ${response.status}`);
-    } catch {
-      errorMessage.value = `We could not place your order. Please try again, or call ${SITE_PHONE}.`;
-      busy.value = false;
-      return;
-    }
-  } else {
-    console.warn('VITE_ORDER_ENDPOINT is not configured. The order will be saved locally only.', order);
+
+  try {
+    const result = await submitSiteForm({
+      form_type: 'order',
+      customer: {
+        email: form.email.trim(), phone: form.phone.trim(),
+        first_name: form.firstName.trim(), last_name: form.lastName.trim()
+      },
+      shipping_address: {
+        address1: form.address1.trim(), address2: form.address2.trim(),
+        city: form.city.trim(), state: form.state, zip: form.zip.trim()
+      },
+      shipping: { method: form.shipping },
+      items: order.items,
+      notes: form.notes.trim(),
+      accepted_terms: form.agree,
+      tracking: collectTracking()
+    });
+    order.number = result.order_number;
+    order.subtotal = Number(result.subtotal);
+    order.shipping.cost = Number(result.shipping_cost);
+    order.total = Number(result.total);
+    saveLastOrder(order);
+    clearCart();
+    router.push('/thank-you/');
+  } catch (error) {
+    errorMessage.value = error?.message || ('We could not submit your order request. Please try again or call ' + SITE_PHONE + '.');
+  } finally {
+    busy.value = false;
   }
-  saveLastOrder(order);
-  clearCart();
-  busy.value = false;
-  router.push('/thank-you/');
 }
 </script>
 <template>
@@ -72,11 +97,11 @@ async function placeOrder() {
     <section v-if="!cartCount" class="sec"><div class="wrap center empty-state"><h1>Your cart is empty</h1><p class="lede">Add something to your cart before checking out.</p><RouterLink to="/shop/" class="btn btn--pri">Shop all products</RouterLink></div></section>
     <section v-else class="sec"><div class="wrap"><form class="co" novalidate @submit.prevent="placeOrder"><div class="co__main">
       <div v-if="errorMessage" class="alert alert--err" role="alert">{{ errorMessage }}</div>
-      <fieldset class="co__step"><legend>1. Contact</legend><div class="form-2"><div class="form-row"><label for="coEmail">Email *</label><input id="coEmail" v-model="form.email" type="email" autocomplete="email" :class="{ 'is-bad': errors.email }" required @input="errors.email = false"></div><div class="form-row"><label for="coPhone">Phone *</label><input id="coPhone" v-model="form.phone" type="tel" autocomplete="tel" :class="{ 'is-bad': errors.phone }" required @input="errors.phone = false"></div></div><p class="form-note">We send your order confirmation and invoice here.</p></fieldset>
+      <fieldset class="co__step"><legend>1. Contact</legend><div class="form-2"><div class="form-row"><label for="coEmail">Email *</label><input id="coEmail" v-model="form.email" type="email" autocomplete="email" :class="{ 'is-bad': errors.email }" required @input="errors.email = false"></div><div class="form-row"><label for="coPhone">Phone *</label><input id="coPhone" v-model="form.phone" type="tel" autocomplete="tel" :class="{ 'is-bad': errors.phone }" required @input="errors.phone = false"></div></div><p class="form-note">We use these details to follow up with you about your order request.</p></fieldset>
       <fieldset class="co__step"><legend>2. Shipping address</legend><div class="form-2"><div class="form-row"><label for="coFirst">First name *</label><input id="coFirst" v-model="form.firstName" autocomplete="given-name" :class="{ 'is-bad': errors.firstName }" required @input="errors.firstName = false"></div><div class="form-row"><label for="coLast">Last name *</label><input id="coLast" v-model="form.lastName" autocomplete="family-name" :class="{ 'is-bad': errors.lastName }" required @input="errors.lastName = false"></div></div><div class="form-row"><label for="coAddr1">Street address *</label><input id="coAddr1" v-model="form.address1" autocomplete="address-line1" :class="{ 'is-bad': errors.address1 }" required @input="errors.address1 = false"></div><div class="form-row"><label for="coAddr2">Apartment, suite, etc. (optional)</label><input id="coAddr2" v-model="form.address2" autocomplete="address-line2"></div><div class="form-3"><div class="form-row"><label for="coCity">City *</label><input id="coCity" v-model="form.city" autocomplete="address-level2" :class="{ 'is-bad': errors.city }" required @input="errors.city = false"></div><div class="form-row"><label for="coState">State *</label><select id="coState" v-model="form.state" autocomplete="address-level1" :class="{ 'is-bad': errors.state }" required @change="errors.state = false"><option value="">Select</option><option v-for="state in states" :key="state" :value="state">{{ state }}</option></select></div><div class="form-row"><label for="coZip">ZIP code *</label><input id="coZip" v-model="form.zip" inputmode="numeric" maxlength="10" autocomplete="postal-code" :class="{ 'is-bad': errors.zip }" required @input="errors.zip = false"></div></div><p class="form-note">We ship within the United States only.</p></fieldset>
       <fieldset class="co__step"><legend>3. Delivery method</legend><div class="co__opts"><label v-for="method in methods" :key="method.id" class="co__opt" :class="{ 'is-on': form.shipping === method.id }"><input v-model="form.shipping" type="radio" name="coShip" :value="method.id"><span><strong>{{ method.label }}</strong><small>{{ method.eta }} after processing</small></span><b>{{ moneyShipping(shippingFor(cartSubtotal, method.id)) }}</b></label></div></fieldset>
-      <fieldset class="co__step"><legend>4. Payment</legend><label class="co__opt is-on"><input type="radio" name="coPay" value="invoice" checked><span><strong>Pay by secure invoice</strong><small>After you place your order we email an itemized invoice with a secure card payment link (Visa, Mastercard, American Express, Discover) within one business hour. You are not charged until you pay it. Orders ship once payment is received.</small></span></label><div class="form-row notes-row"><label for="coNotes">Order notes (optional)</label><textarea id="coNotes" v-model="form.notes" rows="3" placeholder="Delivery instructions, gift message, etc."></textarea></div><label class="co__agree"><input v-model="form.agree" type="checkbox" required><span>I agree to the <RouterLink to="/policies/terms/">Terms of Service</RouterLink>, <RouterLink to="/policies/returns/">Returns Policy</RouterLink> and <RouterLink to="/policies/privacy/">Privacy Policy</RouterLink>.</span></label></fieldset>
-    </div><aside class="co__side"><h2 class="co__h">Order summary</h2><div class="co__items"><div v-for="item in cartItems" :key="item.product.id" class="co__item"><div class="co__thumb"><img class="is-cutout" :src="`https://m.media-amazon.com/images/I/${item.product.amz[0]}._AC_SL200_.jpg`" :alt="item.product.name"><span>{{ item.quantity }}</span></div><div class="co__iname">{{ item.product.short }}<small>{{ item.product.item ? `Item # ${item.product.item}` : item.product.brand }}</small></div><div>{{ money(item.product.price * item.quantity) }}</div></div></div><div class="sum-row"><span>Subtotal</span><span>{{ money(cartSubtotal) }}</span></div><div class="sum-row"><span>Shipping</span><span>{{ moneyShipping(shippingCost) }}</span></div><div class="sum-row"><span>Sales tax</span><span>Added to invoice</span></div><div class="sum-row sum-row--tot"><span>Total</span><span>{{ money(total) }}</span></div><button type="submit" class="btn btn--clay btn--full" :disabled="busy">{{ busy ? 'Placing order…' : 'Place order' }}</button><p class="form-note secure-note">30-day returns · 1–2 year warranty</p><p class="form-note endpoint-note">Orders are submitted to the configured order endpoint, if available.</p></aside></form></div></section>
+      <fieldset class="co__step"><legend>4. Payment</legend><label class="co__opt is-on"><input type="radio" name="coPay" value="invoice" checked><span><strong>Order submission — no payment collected</strong><small>Submitting saves your order request for review. This website does not automatically send invoices or collect payment. Our team will review the request and contact you separately.</small></span></label><div class="form-row notes-row"><label for="coNotes">Order notes (optional)</label><textarea id="coNotes" v-model="form.notes" rows="3" placeholder="Delivery instructions, gift message, etc."></textarea></div><label class="co__agree"><input v-model="form.agree" type="checkbox" required><span>I agree to the <RouterLink to="/policies/terms/">Terms of Service</RouterLink>, <RouterLink to="/policies/returns/">Returns Policy</RouterLink> and <RouterLink to="/policies/privacy/">Privacy Policy</RouterLink>.</span></label></fieldset>
+    </div><aside class="co__side"><h2 class="co__h">Order summary</h2><div class="co__items"><div v-for="item in cartItems" :key="item.product.id" class="co__item"><div class="co__thumb"><img class="is-cutout" :src="`https://m.media-amazon.com/images/I/${item.product.amz[0]}._AC_SL200_.jpg`" :alt="item.product.name"><span>{{ item.quantity }}</span></div><div class="co__iname">{{ item.product.short }}<small>{{ item.product.item ? `Item # ${item.product.item}` : item.product.brand }}</small></div><div>{{ money(item.product.price * item.quantity) }}</div></div></div><div class="sum-row"><span>Subtotal</span><span>{{ money(cartSubtotal) }}</span></div><div class="sum-row"><span>Shipping</span><span>{{ moneyShipping(shippingCost) }}</span></div><div class="sum-row"><span>Sales tax</span><span>Added to invoice</span></div><div class="sum-row sum-row--tot"><span>Total</span><span>{{ money(total) }}</span></div><button type="submit" class="btn btn--clay btn--full" :disabled="busy">{{ busy ? 'Placing order…' : 'Place order' }}</button><p class="form-note secure-note">30-day returns · 1–2 year warranty</p><p class="form-note endpoint-note">Order requests are saved for review. No payment is collected on this page.</p></aside></form></div></section>
   </main>
 </template>
 <style scoped>

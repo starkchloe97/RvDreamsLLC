@@ -50,11 +50,34 @@ public/             Robots, sitemap and SPA rewrite configuration
 
 Page-specific and component-specific styles live in each SFC's `<style scoped>` block. `src/styles/global.css` contains the shared tokens, reset, type defaults, utility classes, and shared reveal state only. Product images continue to use the source website's `m.media-amazon.com` URLs; the provided ZIP did not include local image files to bundle.
 
-## Order/contact configuration
+## Contact forms and MySQL order submissions
 
-Checkout is invoice-oriented and posts a JSON order to `VITE_ORDER_ENDPOINT` when one is configured. Copy `.env.example` to `.env.local`, then set the variable to a **real, HTTPS order-receiver endpoint** before accepting production orders. The endpoint must accept a `POST` request with JSON and return a 2xx response; it must also allow requests from the deployed site's origin. The request contains an order number, customer contact/address details, shipping choice, line items, subtotal, total, notes, and invoice payment method. Configure the server-side receiver to validate and store the order, send confirmation/invoice communications, and apply any tax, inventory, fraud, and privacy requirements.
+The Contact Us form and Checkout form both POST JSON to `/api/submit.php`. The PHP endpoint validates requests and stores them in MySQL with prepared statements. Checkout orders and their line items are written in one transaction. A success response is returned only after the database transaction commits.
 
-**Without `VITE_ORDER_ENDPOINT`, checkout intentionally only stores a local order confirmation in that browser. It does not transmit an order, send email, take payment, reserve inventory, or notify staff. Do not treat local-only checkout as production order processing.** The front end does not collect card details or implement a payment gateway. Contact form submission opens the visitor's email app through a `mailto:` link rather than posting directly to a server.
+### Database setup
+
+1. Create a MySQL database named `rvdreams_storefront` (or choose a different name for your hosting account).
+2. Import `backend/database/schema.sql` using phpMyAdmin or the MySQL CLI.
+3. Copy `public/api/config.example.php` to `public/api/config.php`, then set your MySQL host, database, username, password, and exact allowed origins. The real config file is ignored by Git and direct HTTP access is denied by `public/api/.htaccess`.
+4. Deploy the Vite build to a PHP-enabled Apache/cPanel host. The build includes `/api/submit.php` because it lives in `public/api/`.
+
+For local development, configure `VITE_FORM_ENDPOINT=http://127.0.0.1:8000/api/submit.php` in `.env.local`, then start PHP from the project root:
+
+```bash
+php -S 127.0.0.1:8000 -t public
+```
+
+The PHP config must allow the frontend development origin (normally `http://localhost:5173`). For production, the default `VITE_FORM_ENDPOINT=/api/submit.php` uses the same website origin.
+
+### Tables and stored data
+
+- `contact_submissions`: names, email, optional order number, topic, message, timestamps, and attribution/device metadata.
+- `store_orders`: contact/shipping details, selected shipping method, totals, notes, terms acceptance, status, timestamps and attribution metadata.
+- `store_order_items`: SKU, product name, quantity, submitted catalog price, and line total, linked to the order.
+
+Orders enter the database with `pending_review` status and `not_paid` payment status. This implementation only records submissions; it does not charge cards, send emails, issue invoices, reserve stock, or confirm fulfillment. Item prices originate from the storefront catalog and are stored as a submitted snapshot, so staff must verify catalog pricing before issuing an invoice. Do not treat an unreviewed submission as a paid or accepted order.
+
+The API also stores available UTM source, referrer, GCLID/MSCLKID and page URL values, user-agent-derived device/browser/OS, request IP address, and user agent. Disclose this collection in your privacy policy and follow applicable privacy requirements.
 
 ## Deployment
 
