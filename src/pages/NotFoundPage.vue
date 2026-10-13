@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import PageHero from '../components/shared/PageHero.vue';
+import PageHero from '@/components/shared/PageHero.vue';
 </script>
 <template>
   <main>

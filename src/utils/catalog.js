@@ -1,4 +1,4 @@
-import { CATALOG } from '../data/catalog.js';
+import { CATALOG } from '@/data/catalog.js';
 
 export const PRODUCTS = CATALOG;
 export const PRODUCT_BY_ID = new Map(PRODUCTS.map(product => [product.id, product]));

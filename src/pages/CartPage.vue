@@ -1,10 +1,10 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import PageHero from '../components/shared/PageHero.vue';
-import CartLineItem from '../components/catalog/CartLineItem.vue';
-import { money } from '../utils/catalog.js';
-import { useStorefront } from '../composables/useStorefront.js';
+import PageHero from '@/components/shared/PageHero.vue';
+import CartLineItem from '@/components/catalog/CartLineItem.vue';
+import { money } from '@/utils/catalog.js';
+import { useStorefront } from '@/composables/useStorefront.js';
 const { cartItems, cartCount, cartSubtotal, cartShipping, cartTotal, setQuantity, removeFromCart } = useStorefront();
 const remaining = computed(() => Math.max(0, 50 - cartSubtotal.value));
 </script>

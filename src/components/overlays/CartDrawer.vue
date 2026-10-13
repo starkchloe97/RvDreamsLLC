@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import CartLineItem from '../catalog/CartLineItem.vue';
+import CartLineItem from '@/components/catalog/CartLineItem.vue';
 import { money } from '@/utils/catalog.js';
 import { useStorefront } from '@/composables/useStorefront.js';
 const { state, cartItems, cartCount, cartSubtotal, cartShipping, cartTotal, setQuantity, removeFromCart } = useStorefront();

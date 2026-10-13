@@ -1,5 +1,5 @@
 <script setup>
-import InlineRuns from '@/InlineRuns.vue';
+import InlineRuns from '@/components/shared/InlineRuns.vue';
 
 defineProps({
   blocks: { type: Array, required: true }

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import PageHero from '@/components/shared/PageHero.vue';
 import LegalContent from '@/components/shared/LegalContent.vue';
 import policies from '@/data/policies.json';
-import { SITE_NAME, SITE_EMAIL, SITE_ADDRESS_ONE_LINE, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2, SITE_ADDRESS_LOCALITY, SITE_ADDRESS_REGION, SITE_ADDRESS_POSTAL_CODE, SITE_ADDRESS_COUNTRY, SITE_URL } from '@/config/siteInfo.js';
+import { SITE_NAME, SITE_PHONE, SITE_EMAIL, SITE_ADDRESS_ONE_LINE, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2, SITE_ADDRESS_LOCALITY, SITE_ADDRESS_REGION, SITE_ADDRESS_POSTAL_CODE, SITE_ADDRESS_COUNTRY, SITE_URL } from '@/config/siteInfo.js';
 
 const props = defineProps({
   policyKey: { type: String, required: true }
@@ -14,8 +14,8 @@ function resolveSiteInfo(value) {
       .replace(/ONE 10 GLOBAL LLC/gi, SITE_NAME)
       .replace(/ONE 10 GLOBAL/gi, SITE_NAME.replace(/ LLC$/i, ''))
       .replace(/(?:support|returns|warranty|legal|privacy|access)@one10globalllc\.com/gi, SITE_EMAIL)
-      .replace(/\(236\)\s*506-1948/g, '')
-      .replace(/\+1?-?236-506-1948/g, '')
+      .replace(/\(236\)\s*506-1948/g, SITE_PHONE)
+      .replace(/\+1?-?236-506-1948/g, SITE_PHONE)
       .replace(/10228 E Northwest Hwy,?\s*Dallas, TX 75238(?:, United States)?/gi, SITE_ADDRESS_ONE_LINE)
       .replace(/10228 E Northwest Hwy/gi, SITE_ADDRESS_LINE1)
       .replace(/Dallas, TX 75238(?:, United States)?/gi, `${SITE_ADDRESS_LOCALITY}, ${SITE_ADDRESS_REGION} ${SITE_ADDRESS_POSTAL_CODE}`)

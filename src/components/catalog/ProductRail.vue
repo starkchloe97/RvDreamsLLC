@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import ProductCard from '@/ProductCard.vue';
+import ProductCard from '@/components/catalog/ProductCard.vue';
 defineProps({ title: { type: String, required: true }, products: { type: Array, default: () => [] }, to: { type: String, default: '/shop/' }, tone: { type: String, default: '' } });
 const track = ref(null);
 const scroll = direction => track.value?.scrollBy({ left: direction * Math.max(260, track.value.clientWidth * .8), behavior: 'smooth' });

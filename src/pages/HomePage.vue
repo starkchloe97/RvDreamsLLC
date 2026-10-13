@@ -1,15 +1,15 @@
 <script setup>
 import { computed } from 'vue';
-import HeroSlider from '../components/catalog/HeroSlider.vue';
-import TrustStrip from '../components/catalog/TrustStrip.vue';
-import CategoryCircles from '../components/catalog/CategoryCircles.vue';
-import ProductRail from '../components/catalog/ProductRail.vue';
-import PromoTiles from '../components/catalog/PromoTiles.vue';
-import FeaturedBanner from '../components/catalog/FeaturedBanner.vue';
-import BundleSection from '../components/catalog/BundleSection.vue';
-import FounderStory from '../components/catalog/FounderStory.vue';
-import HomeFaq from '../components/catalog/HomeFaq.vue';
-import { PRODUCTS, firstIn, subcategories, categoryUrl } from '../utils/catalog.js';
+import HeroSlider from '@/components/catalog/HeroSlider.vue';
+import TrustStrip from '@/components/catalog/TrustStrip.vue';
+import CategoryCircles from '@/components/catalog/CategoryCircles.vue';
+import ProductRail from '@/components/catalog/ProductRail.vue';
+import PromoTiles from '@/components/catalog/PromoTiles.vue';
+import FeaturedBanner from '@/components/catalog/FeaturedBanner.vue';
+import BundleSection from '@/components/catalog/BundleSection.vue';
+import FounderStory from '@/components/catalog/FounderStory.vue';
+import HomeFaq from '@/components/catalog/HomeFaq.vue';
+import { PRODUCTS, firstIn, subcategories, categoryUrl } from '@/utils/catalog.js';
 const bestSellers = computed(() => subcategories().flatMap(category => firstIn(category, 4)).slice(0, 12));
 const under15 = computed(() => PRODUCTS.filter(product => product.price < 15).slice(0, 12));
 const kitchenGadgets = computed(() => firstIn('Prep Tools', 12));

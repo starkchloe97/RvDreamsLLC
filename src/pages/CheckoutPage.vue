@@ -1,11 +1,11 @@
 <script setup>
 import { computed, reactive, ref } from 'vue';
 import { RouterLink, useRouter } from 'vue-router';
-import PageHero from '../components/shared/PageHero.vue';
-import { useStorefront } from '../composables/useStorefront.js';
-import { money } from '../utils/catalog.js';
-import { SITE_PHONE } from '../config/siteInfo.js';
-import { submitSiteForm, collectTracking } from '../utils/formSubmission.js';
+import PageHero from '@/components/shared/PageHero.vue';
+import { useStorefront } from '@/composables/useStorefront.js';
+import { money } from '@/utils/catalog.js';
+import { SITE_PHONE } from '@/config/siteInfo.js';
+import { submitSiteForm, collectTracking } from '@/utils/formSubmission.js';
 
 const router = useRouter();
 const { cartItems, cartCount, cartSubtotal, clearCart, saveLastOrder, shippingFor } = useStorefront();
@@ -86,7 +86,7 @@ async function placeOrder() {
     clearCart();
     router.push('/thank-you/');
   } catch (error) {
-    errorMessage.value = error?.message || 'We could not submit your order request. Please try again.';
+    errorMessage.value = error?.message || `We could not submit your order request. Please try again or call ${SITE_PHONE}.`;
   } finally {
     busy.value = false;
   }

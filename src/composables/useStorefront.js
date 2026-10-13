@@ -1,5 +1,5 @@
 import { computed, reactive, watch } from 'vue';
-import { PRODUCT_BY_ID, money } from '../utils/catalog.js';
+import { PRODUCT_BY_ID, money } from '@/utils/catalog.js';
 
 const CART_KEY = 'havenform_cart_v1';
 const WISH_KEY = 'havenform_wish_v1';

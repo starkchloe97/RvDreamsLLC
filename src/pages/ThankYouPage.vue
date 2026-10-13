@@ -1,9 +1,9 @@
 <script setup>
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
-import { useStorefront } from '../composables/useStorefront.js';
-import { money } from '../utils/catalog.js';
-import { SITE_NAME, SITE_EMAIL } from '../config/siteInfo.js';
+import { useStorefront } from '@/composables/useStorefront.js';
+import { money } from '@/utils/catalog.js';
+import { SITE_NAME, SITE_EMAIL } from '@/config/siteInfo.js';
 const { readLastOrder } = useStorefront();
 const order = computed(() => readLastOrder());
 const delivery = computed(() => ({ standard: { label: 'Standard', eta: '3–6 business days' }, expedited: { label: 'Expedited', eta: '2–3 business days' }, priority: { label: 'Priority', eta: '1–2 business days' } }[order.value?.shipping?.method] || { label: 'Standard', eta: '3–6 business days' }));

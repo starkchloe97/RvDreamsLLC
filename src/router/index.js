@@ -1,22 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import pages from '../data/pages.json';
-import HomePage from '../pages/HomePage.vue';
-import CatalogPage from '../pages/CatalogPage.vue';
-import ProductPage from '../pages/ProductPage.vue';
-import CartPage from '../pages/CartPage.vue';
-import CheckoutPage from '../pages/CheckoutPage.vue';
-import ThankYouPage from '../pages/ThankYouPage.vue';
-import AboutPage from '../pages/AboutPage.vue';
-import ContactPage from '../pages/ContactPage.vue';
-import ShippingPolicyPage from '../pages/ShippingPolicyPage.vue';
-import ReturnsPolicyPage from '../pages/ReturnsPolicyPage.vue';
-import WarrantyPolicyPage from '../pages/WarrantyPolicyPage.vue';
-import FaqPage from '../pages/FaqPage.vue';
-import TermsPage from '../pages/TermsPage.vue';
-import PrivacyPage from '../pages/PrivacyPage.vue';
-import AccessibilityPage from '../pages/AccessibilityPage.vue';
-import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_PHONE, SITE_PHONE_RAW, SITE_ADDRESS_ONE_LINE, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2, SITE_ADDRESS_LOCALITY, SITE_ADDRESS_REGION, SITE_ADDRESS_POSTAL_CODE, SITE_ADDRESS_COUNTRY } from '../config/siteInfo.js';
-import NotFoundPage from '../pages/NotFoundPage.vue';
+import pages from '@/data/pages.json';
+import HomePage from '@/pages/HomePage.vue';
+import CatalogPage from '@/pages/CatalogPage.vue';
+import ProductPage from '@/pages/ProductPage.vue';
+import CartPage from '@/pages/CartPage.vue';
+import CheckoutPage from '@/pages/CheckoutPage.vue';
+import ThankYouPage from '@/pages/ThankYouPage.vue';
+import AboutPage from '@/pages/AboutPage.vue';
+import ContactPage from '@/pages/ContactPage.vue';
+import ShippingPolicyPage from '@/pages/ShippingPolicyPage.vue';
+import ReturnsPolicyPage from '@/pages/ReturnsPolicyPage.vue';
+import WarrantyPolicyPage from '@/pages/WarrantyPolicyPage.vue';
+import FaqPage from '@/pages/FaqPage.vue';
+import TermsPage from '@/pages/TermsPage.vue';
+import PrivacyPage from '@/pages/PrivacyPage.vue';
+import AccessibilityPage from '@/pages/AccessibilityPage.vue';
+import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_PHONE, SITE_PHONE_RAW, SITE_ADDRESS_ONE_LINE, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2, SITE_ADDRESS_LOCALITY, SITE_ADDRESS_REGION, SITE_ADDRESS_POSTAL_CODE, SITE_ADDRESS_COUNTRY } from '@/config/siteInfo.js';
+import NotFoundPage from '@/pages/NotFoundPage.vue';
 
 function resolveSiteInfo(value) {
   if (typeof value === 'string') {
@@ -44,7 +44,7 @@ function resolveSiteInfo(value) {
       resolved.address.postalCode = SITE_ADDRESS_POSTAL_CODE;
       resolved.address.addressCountry = SITE_ADDRESS_COUNTRY;
     }
-    if (resolved.telephone) resolved.telephone = SITE_PHONE_RAW;
+    if ('telephone' in resolved) resolved.telephone = SITE_PHONE_RAW;
     if (resolved.email) resolved.email = SITE_EMAIL;
     return resolved;
   }

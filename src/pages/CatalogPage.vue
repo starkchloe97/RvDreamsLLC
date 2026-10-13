@@ -1,10 +1,10 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
-import Breadcrumbs from '../components/shared/Breadcrumbs.vue';
-import ProductGrid from '../components/catalog/ProductGrid.vue';
-import TrustStrip from '../components/catalog/TrustStrip.vue';
-import { PRODUCTS, CATEGORIES, countIn, money, categoryUrl } from '../utils/catalog.js';
+import Breadcrumbs from '@/components/shared/Breadcrumbs.vue';
+import ProductGrid from '@/components/catalog/ProductGrid.vue';
+import TrustStrip from '@/components/catalog/TrustStrip.vue';
+import { PRODUCTS, CATEGORIES, countIn, money, categoryUrl } from '@/utils/catalog.js';
 const props = defineProps({ category: { type: String, default: 'All' }, pageInfo: { type: Object, default: () => ({}) } });
 const route = useRoute();
 const router = useRouter();

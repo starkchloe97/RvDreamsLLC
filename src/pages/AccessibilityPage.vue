@@ -1,5 +1,5 @@
 <script setup>
-import PolicyPage from '../components/shared/PolicyPage.vue';
+import PolicyPage from '@/components/shared/PolicyPage.vue';
 </script>
 <template><PolicyPage policy-key="accessibility" /></template>
 <style scoped>

@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import brandWhite from '@/assets/images/brandWhite.png';
-import { SITE_NAME, SITE_EMAIL, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2 } from '@/config/siteInfo.js';
+import { SITE_NAME, SITE_PHONE, SITE_PHONE_RAW, SITE_EMAIL, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2 } from '@/config/siteInfo.js';
 const year = new Date().getFullYear();
 </script>
 <template>
@@ -85,7 +85,7 @@ const year = new Date().getFullYear();
           <div><strong>Business Address</strong>
             <address>{{ SITE_NAME }}<br>{{ SITE_ADDRESS_LINE1 }}<br>{{ SITE_ADDRESS_LINE2 }}</address>
           </div>
-          <div><strong>Customer Service</strong><a :href="`mailto:${SITE_EMAIL}`">{{ SITE_EMAIL }}</a><br>Mon–Fri, 9:00 AM – 5:00 PM CT<br>Response within 1
+          <div><strong>Customer Service</strong><a :href="`mailto:${SITE_EMAIL}`">{{ SITE_EMAIL }}</a><br><a :href="`tel:${SITE_PHONE_RAW}`">{{ SITE_PHONE }}</a><br>Mon–Fri, 9:00 AM – 5:00 PM CT<br>Response within 1
             business
             day</div>
         </div>

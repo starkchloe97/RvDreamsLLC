@@ -1,12 +1,12 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import Breadcrumbs from '../components/shared/Breadcrumbs.vue';
-import ProductGrid from '../components/catalog/ProductGrid.vue';
-import TrustStrip from '../components/catalog/TrustStrip.vue';
-import { PRODUCTS, PRODUCT_BY_ID, productImageUrl, productImageCount, money, categoryUrl } from '../utils/catalog.js';
-import { useStorefront } from '../composables/useStorefront.js';
-import { SITE_NAME, SITE_EMAIL } from '../config/siteInfo.js';
+import Breadcrumbs from '@/components/shared/Breadcrumbs.vue';
+import ProductGrid from '@/components/catalog/ProductGrid.vue';
+import TrustStrip from '@/components/catalog/TrustStrip.vue';
+import { PRODUCTS, PRODUCT_BY_ID, productImageUrl, productImageCount, money, categoryUrl } from '@/utils/catalog.js';
+import { useStorefront } from '@/composables/useStorefront.js';
+import { SITE_NAME, SITE_EMAIL } from '@/config/siteInfo.js';
 const props = defineProps({ slug: { type: String, default: '' }, pageInfo: { type: Object, default: () => ({}) } });
 const { state, addToCart, toggleWishlist, openLightbox } = useStorefront();
 const product = computed(() => PRODUCT_BY_ID.get(props.slug) || null);
