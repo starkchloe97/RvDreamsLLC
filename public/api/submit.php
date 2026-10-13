@@ -116,33 +116,6 @@ function detectAgent(string $ua): array
     return ['device' => $device, 'browser' => $browser, 'operating_system' => $os];
 }
 
-function requestMetadata(array $data): array
-{
-    $tracking = is_array($data['tracking'] ?? null) ? $data['tracking'] : [];
-    $utmSource = textField($tracking, 'utm_source', 255);
-    $referrer = textField($tracking, 'referrer', 2048);
-    $source = $utmSource !== '' ? $utmSource : ($referrer !== '' ? $referrer : 'direct');
-    $ua = textField(['ua' => ($_SERVER['HTTP_USER_AGENT'] ?? '')], 'ua', 512);
-    $ip = trim((string) ($_SERVER['REMOTE_ADDR'] ?? ''));
-    if (!filter_var($ip, FILTER_VALIDATE_IP)) {
-        $ip = '';
-    }
-
-    return [
-        'source' => substr($source, 0, 2048),
-        'utm_source' => nullableValue($utmSource),
-        'referrer' => nullableValue($referrer),
-        'gclid' => nullableValue(textField($tracking, 'gclid', 255)),
-        'msclkid' => nullableValue(textField($tracking, 'msclkid', 255)),
-        'url_source' => nullableValue(textField($tracking, 'url_source', 2048)),
-        'device' => $agent['device'] ?? 'Unknown',
-        'browser' => $agent['browser'] ?? 'Unknown',
-        'operating_system' => $agent['operating_system'] ?? 'Unknown',
-        'ip_address' => nullableValue($ip),
-        'user_agent' => nullableValue($ua),
-    ];
-}
-
 function createConnection(array $config): PDO
 {
     foreach (['db_host', 'db_name', 'db_user', 'db_pass'] as $key) {
