@@ -10,8 +10,8 @@ return [
     'db_user' => 'micrvsdj_rvdreamsxx',
     'db_pass' => '@123Mj491d_fu8k',
     'allowed_origins' => [
+         'https://rvdreamsllc.com',
         'https://www.rvdreamsllc.com',
-        'https://rvdreamsllc.com',
         'http://localhost:5173',
         'http://127.0.0.1:5173',
     ],

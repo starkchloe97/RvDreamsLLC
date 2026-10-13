@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from '@/App.vue';
 import router from '@/router/index.js';
-import './styles/global.css';
+import '@/styles/global.css';
 import { revealDirective } from '@/directives/reveal.js';
 import { SITE_NAME, SITE_URL } from '@/config/siteInfo.js';
 
