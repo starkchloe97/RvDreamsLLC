@@ -18,7 +18,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
   <header class="hdr" :class="{ 'is-scrolled': scrolled }">
     <div class="wrap hdr__in">
       <RouterLink to="/" class="brand"  :aria-label="`${SITE_NAME} home`" @click="state.mobileMenuOpen = false">
-        <img :src="brand" alt="{{ SITE_NAME }}" class="brand__mark" />
+        <img :src="brand"  :alt="`${SITE_NAME} logo`" class="brand__mark" />
       </RouterLink>
       <nav class="nav" :class="{ open: state.mobileMenuOpen }" aria-label="Main navigation">
         <RouterLink to="/shop/" :class="{ 'is-on': isActive('/shop/') }" @click="state.mobileMenuOpen = false">Shop All
