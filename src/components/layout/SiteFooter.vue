@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { useStorefront } from '../../composables/useStorefront.js';
 import brandWhite from '../../assets/images/brandWhite.png';
 import { SITE_NAME, SITE_PHONE, SITE_PHONE_RAW, SITE_EMAIL, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2 } from '../../config/siteInfo.js';
 const year = new Date().getFullYear();
@@ -10,11 +9,11 @@ const year = new Date().getFullYear();
     <div class="wrap">
       <div class="ftr__top">
         <div>
-         <RouterLink to="/" class="brand"  :aria-label="`${SITE_NAME} home`" @click="state.mobileMenuOpen = false">
-        <img :src="brandWhite" alt="{{ SITE_NAME }}" class="brand__mark" />
+         <RouterLink to="/" class="brand" :aria-label="`${SITE_NAME} home`">
+        <img :src="brandWhite"  :alt="`${SITE_NAME} logo`" class="brand__mark" />
       </RouterLink>
           <p class="ftr__about">{{ SITE_NAME }} is an online store for home organization and kitchen essentials from
-            top-rated brands. Based in Dallas, Texas.</p>
+            top-rated brands. Serving customers across the United States.</p>
           <div class="ftr__pay" aria-label="Accepted payment methods">
             <span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>DISCOVER</span>
           </div>
@@ -82,7 +81,7 @@ const year = new Date().getFullYear();
       </div>
       <div class="ftr__legal">
         <div class="ftr__biz">
-          <div><strong>Legal Entity</strong>{{ SITE_NAME }}<br>Texas LLC · SOS File No. 0804835686</div>
+          <div><strong>Legal Entity</strong>{{ SITE_NAME }}<br>Registered business</div>
           <div><strong>Business Address</strong>
             <address>{{ SITE_NAME }}<br>{{ SITE_ADDRESS_LINE1 }}<br>{{ SITE_ADDRESS_LINE2 }}</address>
           </div>
