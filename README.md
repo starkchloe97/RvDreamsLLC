@@ -61,13 +61,9 @@ The Contact Us form and Checkout form both POST JSON to `/api/submit.php`. The P
 3. Copy `public/api/config.example.php` to `public/api/config.php`, then set your MySQL host, database, username, password, and exact allowed origins. The real config file is ignored by Git and direct HTTP access is denied by `public/api/.htaccess`.
 4. Deploy the Vite build to a PHP-enabled Apache/cPanel host. The build includes `/api/submit.php` because it lives in `public/api/`.
 
-For local development, configure `VITE_FORM_ENDPOINT=http://127.0.0.1:8000/api/submit.php` in `.env.local`, then start PHP from the project root:
+For local development with Laragon/XAMPP serving files at `http://localhost/`, no environment override is required: Vite automatically posts to `http://localhost/api/submit.php`. If Apache runs on another port or path, set `VITE_FORM_ENDPOINT` in `.env.local` to that full PHP endpoint URL. Restart Vite after changing environment variables.
 
-```bash
-php -S 127.0.0.1:8000 -t public
-```
-
-The PHP config must allow the frontend development origin (normally `http://localhost:5173`). For production, the default `VITE_FORM_ENDPOINT=/api/submit.php` uses the same website origin.
+The PHP config must allow the frontend development origin (normally `http://localhost:5173`). In production, the default is the same-origin `/api/submit.php` path. If the endpoint is missing or returns HTML instead of JSON, the form now reports the endpoint/status problem instead of a generic save error.
 
 ### Tables and stored data
 
