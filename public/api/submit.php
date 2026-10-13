@@ -16,16 +16,8 @@ function respond(int $status, array $payload): void
     exit;
 }
 
-
 $configPath = __DIR__ . '/config.php';
-if (!is_file($configPath)) {
-    respond(500, ['ok' => false, 'error' => 'The submission service is not configured.']);
-}
-$config = require $configPath;
-if (!is_array($config)) {
-    respond(500, ['ok' => false, 'error' => 'The submission service is not configured.']);
-}
-
+$config = is_file($configPath) ? require $configPath : [];
 $allowedOrigins = is_array($config['allowed_origins'] ?? null) ? $config['allowed_origins'] : [];
 $origin = trim((string) ($_SERVER['HTTP_ORIGIN'] ?? ''));
 
