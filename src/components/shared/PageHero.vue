@@ -1,5 +1,5 @@
 <script setup>
-import Breadcrumbs from '@/src/components/shared/Breadcrumbs.vue';
+import Breadcrumbs from '@/components/shared/Breadcrumbs.vue';
 defineProps({ title: { type: String, required: true }, description: { type: String, default: '' }, breadcrumbs: { type: Array, default: () => [] }, slim: { type: Boolean, default: false } });
 </script>
 <template>
