@@ -86,7 +86,7 @@ async function placeOrder() {
     clearCart();
     router.push('/thank-you/');
   } catch (error) {
-    errorMessage.value = error?.message || ('We could not submit your order request. Please try again or call ' + SITE_PHONE + '.');
+    errorMessage.value = error?.message || 'We could not submit your order request. Please try again.';
   } finally {
     busy.value = false;
   }

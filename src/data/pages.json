@@ -133,7 +133,7 @@
     "path": "/contact/",
     "page": "contact",
     "title": "Contact Us | ONE 10 GLOBAL LLC",
-    "description": "Contact ONE 10 GLOBAL customer support by email, phone or form. Mon–Fri 9–5 CT.",
+    "description": "Contact ONE 10 GLOBAL customer support by email or the contact form. Mon–Fri 9–5 CT.",
     "canonical": "https://www.one10globalllc.com/contact/",
     "product": "",
     "cat": "",
@@ -163,7 +163,7 @@
       "name": "ONE 10 GLOBAL LLC",
       "url": "https://www.one10globalllc.com",
       "email": "support@one10globalllc.com",
-      "telephone": "+1-236-506-1948",
+      "telephone": "",
       "description": "ONE 10 GLOBAL LLC sells home organization and kitchen products online. Based in Dallas, Texas.",
       "address": {
         "@type": "PostalAddress",
