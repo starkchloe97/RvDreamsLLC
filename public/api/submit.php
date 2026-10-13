@@ -141,7 +141,7 @@ function metadataParameters(array $meta): array
     return $params;
 }
 
-function requestMetadataFixed(array $data): array
+function requestMetadata(array $data): array
 {
     $tracking = is_array($data['tracking'] ?? null) ? $data['tracking'] : [];
     $utmSource = textField($tracking, 'utm_source', 255);
@@ -210,7 +210,7 @@ if ($formType === 'contact') {
 
     try {
         $pdo = createConnection($config);
-        $meta = requestMetadataFixed($data);
+        $meta = requestMetadata($data);
         $sql = 'INSERT INTO contact_submissions
             (first_name, last_name, email, order_number, topic, message,
              source, utm_source, referrer, gclid, msclkid, url_source,
@@ -314,7 +314,7 @@ if ($total > 5000000) {
 try {
     $orderNumber = 'RV-' . gmdate('Ymd') . '-' . strtoupper(bin2hex(random_bytes(3)));
     $pdo = createConnection($config);
-    $meta = requestMetadataFixed($data);
+    $meta = requestMetadata($data);
     $pdo->beginTransaction();
 
     $sql = 'INSERT INTO store_orders
