@@ -15,7 +15,7 @@ import FaqPage from '../pages/FaqPage.vue';
 import TermsPage from '../pages/TermsPage.vue';
 import PrivacyPage from '../pages/PrivacyPage.vue';
 import AccessibilityPage from '../pages/AccessibilityPage.vue';
-import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_PHONE, SITE_PHONE_RAW, SITE_ADDRESS_ONE_LINE, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2 } from '../config/siteInfo.js';
+import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_PHONE, SITE_PHONE_RAW, SITE_ADDRESS_ONE_LINE, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2, SITE_ADDRESS_LOCALITY, SITE_ADDRESS_REGION, SITE_ADDRESS_POSTAL_CODE, SITE_ADDRESS_COUNTRY } from '../config/siteInfo.js';
 import NotFoundPage from '../pages/NotFoundPage.vue';
 
 function resolveSiteInfo(value) {
@@ -28,8 +28,8 @@ function resolveSiteInfo(value) {
       .replace(/\+1?-?236-506-1948/g, SITE_PHONE_RAW)
       .replace(/10228 E Northwest Hwy,?\s*Dallas, TX 75238(?:, United States)?/gi, SITE_ADDRESS_ONE_LINE)
       .replace(/10228 E Northwest Hwy/gi, SITE_ADDRESS_LINE1)
-      .replace(/Dallas, TX 75238(?:, United States)?/gi, SITE_ADDRESS_LINE2)
-      .replace(/Dallas, Texas/gi, SITE_ADDRESS_LINE2)
+      .replace(/Dallas, TX 75238(?:, United States)?/gi, `${SITE_ADDRESS_LOCALITY}, ${SITE_ADDRESS_REGION} ${SITE_ADDRESS_POSTAL_CODE}`)
+      .replace(/Dallas, Texas/gi, `${SITE_ADDRESS_LOCALITY}, ${SITE_ADDRESS_REGION}`)
       .replace(/Dallas facility/gi, 'our facility')
       .replace(/https?:\/\/(?:www\.)?one10globalllc\.com/gi, SITE_URL)
       .replace(/(?:www\.)?one10globalllc\.com/gi, new URL(SITE_URL).host);
@@ -39,10 +39,10 @@ function resolveSiteInfo(value) {
     const resolved = Object.fromEntries(Object.entries(value).map(([key, child]) => [key, resolveSiteInfo(child)]));
     if (resolved.address && typeof resolved.address === 'object') {
       resolved.address.streetAddress = SITE_ADDRESS_ONE_LINE;
-      delete resolved.address.addressLocality;
-      delete resolved.address.addressRegion;
-      delete resolved.address.postalCode;
-      delete resolved.address.addressCountry;
+      resolved.address.addressLocality = SITE_ADDRESS_LOCALITY;
+      resolved.address.addressRegion = SITE_ADDRESS_REGION;
+      resolved.address.postalCode = SITE_ADDRESS_POSTAL_CODE;
+      resolved.address.addressCountry = SITE_ADDRESS_COUNTRY;
     }
     if (resolved.telephone) resolved.telephone = SITE_PHONE_RAW;
     if (resolved.email) resolved.email = SITE_EMAIL;
