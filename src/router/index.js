@@ -15,8 +15,40 @@ import FaqPage from '../pages/FaqPage.vue';
 import TermsPage from '../pages/TermsPage.vue';
 import PrivacyPage from '../pages/PrivacyPage.vue';
 import AccessibilityPage from '../pages/AccessibilityPage.vue';
-import { SITE_NAME, SITE_URL } from '../config/siteInfo.js';
+import { SITE_NAME, SITE_URL, SITE_EMAIL, SITE_PHONE, SITE_PHONE_RAW, SITE_ADDRESS_ONE_LINE, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2 } from '../config/siteInfo.js';
 import NotFoundPage from '../pages/NotFoundPage.vue';
+
+function resolveSiteInfo(value) {
+  if (typeof value === 'string') {
+    return value
+      .replace(/ONE 10 GLOBAL LLC/gi, SITE_NAME)
+      .replace(/ONE 10 GLOBAL/gi, SITE_NAME.replace(/ LLC$/i, ''))
+      .replace(/(?:support|returns|warranty|legal|privacy|access)@one10globalllc\.com/gi, SITE_EMAIL)
+      .replace(/\(236\)\s*506-1948/g, SITE_PHONE)
+      .replace(/\+1?-?236-506-1948/g, SITE_PHONE_RAW)
+      .replace(/10228 E Northwest Hwy,?\s*Dallas, TX 75238(?:, United States)?/gi, SITE_ADDRESS_ONE_LINE)
+      .replace(/10228 E Northwest Hwy/gi, SITE_ADDRESS_LINE1)
+      .replace(/Dallas, TX 75238(?:, United States)?/gi, SITE_ADDRESS_LINE2)
+      .replace(/Dallas, Texas/gi, SITE_ADDRESS_LINE2)
+      .replace(/https?:\/\/(?:www\.)?one10globalllc\.com/gi, SITE_URL)
+      .replace(/(?:www\.)?one10globalllc\.com/gi, new URL(SITE_URL).host);
+  }
+  if (Array.isArray(value)) return value.map(resolveSiteInfo);
+  if (value && typeof value === 'object') {
+    const resolved = Object.fromEntries(Object.entries(value).map(([key, child]) => [key, resolveSiteInfo(child)]));
+    if (resolved.address && typeof resolved.address === 'object') {
+      resolved.address.streetAddress = SITE_ADDRESS_ONE_LINE;
+      delete resolved.address.addressLocality;
+      delete resolved.address.addressRegion;
+      delete resolved.address.postalCode;
+      delete resolved.address.addressCountry;
+    }
+    if (resolved.telephone) resolved.telephone = SITE_PHONE_RAW;
+    if (resolved.email) resolved.email = SITE_EMAIL;
+    return resolved;
+  }
+  return value;
+}
 
 const pageComponents = {
   home: HomePage,
@@ -69,9 +101,9 @@ function upsertMeta(selector, tagName, attrs) {
 }
 
 router.afterEach(to => {
-  const page = pages[to.path];
-  const title = (page?.title || `Page Not Found | ${SITE_NAME}`).replace(/ONE 10 GLOBAL LLC/g, SITE_NAME);
-  const description = (page?.description || "The page you're looking for doesn't exist.").replace(/ONE 10 GLOBAL LLC/g, SITE_NAME).replace(/ONE 10 GLOBAL/g, SITE_NAME.replace(/ LLC$/, ''));
+  const page = resolveSiteInfo(pages[to.path]);
+  const title = page?.title || `Page Not Found | ${SITE_NAME}`;
+  const description = page?.description || "The page you're looking for doesn't exist.";
   document.title = title;
   upsertMeta('meta[name="description"]', 'meta', { name: 'description', content: description });
   upsertMeta('meta[property="og:title"]', 'meta', { property: 'og:title', content: title });
