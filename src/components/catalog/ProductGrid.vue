@@ -1,5 +1,5 @@
 <script setup>
-import ProductCard from '@/src/components/catalog/ProductCard.vue';
+import ProductCard from '@/components/catalog/ProductCard.vue';
 defineProps({ products: { type: Array, default: () => [] } });
 </script>
 <template>
