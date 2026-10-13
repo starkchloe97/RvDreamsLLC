@@ -20,6 +20,7 @@ function resolveSiteInfo(value) {
       .replace(/10228 E Northwest Hwy/gi, SITE_ADDRESS_LINE1)
       .replace(/Dallas, TX 75238(?:, United States)?/gi, SITE_ADDRESS_LINE2)
       .replace(/Dallas, Texas/gi, SITE_ADDRESS_LINE2)
+      .replace(/Dallas facility/gi, 'our facility')
       .replace(/https?:\/\/(?:www\.)?one10globalllc\.com/gi, SITE_URL)
       .replace(/(?:www\.)?one10globalllc\.com/gi, new URL(SITE_URL).host);
   }
