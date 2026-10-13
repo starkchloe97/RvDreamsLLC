@@ -12,7 +12,7 @@
             <circle cx="5.5" cy="18.5" r="2.5" />
             <circle cx="18.5" cy="18.5" r="2.5" />
           </svg>
-          <div><strong>Free US Shipping</strong><span>On all orders over $50, shipped from Dallas, TX</span></div>
+          <div><strong>Free US Shipping</strong><span>On all orders over $50</span></div>
         </div>
         <div class="strip__i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
