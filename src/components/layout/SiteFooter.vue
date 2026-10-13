@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { useStorefront } from '../../composables/useStorefront.js';
+import brandWhite from '../../assets/images/brandWhite.png';
 import { SITE_NAME, SITE_PHONE, SITE_PHONE_RAW, SITE_EMAIL, SITE_ADDRESS_LINE1, SITE_ADDRESS_LINE2 } from '../../config/siteInfo.js';
 const year = new Date().getFullYear();
 </script>
@@ -9,13 +10,14 @@ const year = new Date().getFullYear();
     <div class="wrap">
       <div class="ftr__top">
         <div>
-          <div class="ftr__brand"><span class="brand__mark"><svg viewBox="0 0 100 100" aria-hidden="true"><text x="50"
-                  y="68" text-anchor="middle" font-family="PT Serif, Georgia, serif" font-size="54" font-weight="700"
-                  fill="#1A1A18">10</text></svg></span><span>{{ SITE_NAME }}</span></div>
+         <RouterLink to="/" class="brand"  :aria-label="`${SITE_NAME} home`" @click="state.mobileMenuOpen = false">
+        <img :src="brandWhite" alt="{{ SITE_NAME }}" class="brand__mark" />
+      </RouterLink>
           <p class="ftr__about">{{ SITE_NAME }} is an online store for home organization and kitchen essentials from
             top-rated brands. Based in Dallas, Texas.</p>
           <div class="ftr__pay" aria-label="Accepted payment methods">
-            <span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>DISCOVER</span></div>
+            <span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>DISCOVER</span>
+          </div>
         </div>
         <div>
           <h4>Shop</h4>
@@ -84,9 +86,9 @@ const year = new Date().getFullYear();
           <div><strong>Business Address</strong>
             <address>{{ SITE_NAME }}<br>{{ SITE_ADDRESS_LINE1 }}<br>{{ SITE_ADDRESS_LINE2 }}</address>
           </div>
-          <div><strong>Customer Service</strong><a
-               :href="`mailto:${SITE_EMAIL}`">{{ SITE_EMAIL }}</a><br><a
-               :href="`tel:${SITE_PHONE_RAW}`">{{ SITE_PHONE }}</a><br>Mon–Fri, 9:00 AM – 5:00 PM CT<br>Response within 1 business
+          <div><strong>Customer Service</strong><a :href="`mailto:${SITE_EMAIL}`">{{ SITE_EMAIL }}</a><br><a
+              :href="`tel:${SITE_PHONE_RAW}`">{{ SITE_PHONE }}</a><br>Mon–Fri, 9:00 AM – 5:00 PM CT<br>Response within 1
+            business
             day</div>
         </div>
         <div class="ftr__base"><span>© {{ year }} {{ SITE_NAME }}. All rights reserved. Product names and brands
@@ -149,13 +151,8 @@ const year = new Date().getFullYear();
 }
 
 .brand__mark {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: var(--paper);
-  display: grid;
-  place-items: center;
-  flex-shrink: 0
+  width: auto;
+  height: 60px;
 }
 
 .brand__mark svg {

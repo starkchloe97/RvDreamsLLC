@@ -4,6 +4,7 @@ import { RouterLink, useRoute } from 'vue-router';
 import { useStorefront } from '../../composables/useStorefront.js';
 import AnnouncementBar from './AnnouncementBar.vue';
 import { SITE_NAME } from '../../config/siteInfo.js';
+import brand from '../../assets/images/brand.png';
 const { state, cartCount } = useStorefront();
 const route = useRoute();
 const scrolled = ref(false);
@@ -17,10 +18,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
   <header class="hdr" :class="{ 'is-scrolled': scrolled }">
     <div class="wrap hdr__in">
       <RouterLink to="/" class="brand"  :aria-label="`${SITE_NAME} home`" @click="state.mobileMenuOpen = false">
-        <span class="brand__mark"><svg viewBox="0 0 100 100" aria-hidden="true"><text x="50" y="68" text-anchor="middle"
-              font-family="PT Serif, Georgia, serif" font-size="54" font-weight="700"
-              fill="#FBFAF7">10</text></svg></span>
-        <span class="brand__txt">{{ SITE_NAME }}</span>
+        <img :src="brand" alt="{{ SITE_NAME }}" class="brand__mark" />
       </RouterLink>
       <nav class="nav" :class="{ open: state.mobileMenuOpen }" aria-label="Main navigation">
         <RouterLink to="/shop/" :class="{ 'is-on': isActive('/shop/') }" @click="state.mobileMenuOpen = false">Shop All
@@ -93,13 +91,8 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
 }
 
 .brand__mark {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: var(--ink);
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
+  width: auto;
+  height: 60px;
   transition: transform .4s var(--ease-spring), background .2s
 }
 
